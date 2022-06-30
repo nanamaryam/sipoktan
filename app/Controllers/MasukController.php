@@ -6,6 +6,8 @@ use App\Models\MasukModel;
 
 use App\Models\AsetModel;
 
+use App\Models\CostModel;
+
 use App\Controllers\BaseController;
 
 use CodeIgniter\HTTP\Request;
@@ -14,10 +16,12 @@ class MasukController extends BaseController
 {
     protected $masukModel;
     protected $asetModel;
+    protected $costModel;
     public function __construct()
     {
         $this->masukModel = new MasukModel();
         $this->asetModel = new AsetModel();
+        $this->costModel = new CostModel();
     }
     public function index()
     {
@@ -66,6 +70,14 @@ class MasukController extends BaseController
             $this->asetModel->save([
                 'id'          => $this->request->getVar('id_aset')[$i],
                 'jumlah'      => $this->request->getVar('jumlah_masuk')[$i] + $this->request->getVar('jumlah')[$i],
+            ]);
+        }
+
+        for ($i = 0; $i < $d; $i++) {
+            $this->costModel->save([
+                'cost_time'     => date('Y-m-d'),
+                'berita_acara'  => $this->request->getVar('berita_acara')[$i],
+                'nominal_cost'  => $this->request->getVar('harga_masuk')[$i],
             ]);
         }
 

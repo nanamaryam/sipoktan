@@ -24,7 +24,11 @@ class PanenController extends BaseController
     public function index()
     {
         session();
-        $dataPanen = $this->panenModel->getAllPanen()->getResultArray();
+        if (in_groups('user') == true) {
+            $dataPanen = $this->panenModel->getAllPanen()->getResultArray();
+        } elseif (in_groups('admin') == true) {
+            $dataPanen = $this->panenModel->getNoUser()->getResultArray();
+        }
         $dataSatuan = $this->satuanModel->getActive()->getResultArray();
         $data = [
             'dataPanen'     => $dataPanen,
@@ -36,6 +40,7 @@ class PanenController extends BaseController
     {
         $this->panenModel->save([
             'id_user'           => user_id(),
+            'time_today'        => date('Y-m-d'),
             'harga_perkilo'     => $this->request->getVar('harga_perkilo'),
             'berat'             => $this->request->getVar('berat'),
             'id_satuan'         => $this->request->getVar('id_satuan'),
@@ -68,5 +73,22 @@ class PanenController extends BaseController
         $this->panenModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('panen');
+    }
+    public function dataPanen()
+    {
+        $dataPanen = $this->panenModel->getForAdmin()->getResultArray();
+        $data = [
+            'dataPanen'       => $dataPanen,
+        ];
+        return view('hris/panenData', $data);
+    }
+    public function dataPanenDetail()
+    {
+        $loginId = $this->request->getVar('user_id');
+        $dataPanen = $this->panenModel->getForDetail($loginId)->getResultArray();
+        $data = [
+            'dataPanen'       => $dataPanen,
+        ];
+        return view('hris/modalPanen/detailPanen', $data);
     }
 }

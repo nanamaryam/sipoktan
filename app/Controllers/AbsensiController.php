@@ -39,4 +39,21 @@ class AbsensiController extends BaseController
         session()->setFlashdata('pesan', 'Absen berhasil dibuat');
         return redirect()->to('absensi');
     }
+    public function dataAbsensi()
+    {
+        $dataAbsensi = $this->absensiModel->getAdminAbsensi()->getResultArray();
+        $data = [
+            'dataAbsensi'       => $dataAbsensi,
+        ];
+        return view('hris/dataAbsensi', $data);
+    }
+    public function dataAbsensiDetail()
+    {
+        $idUser = $this->request->getVar('user_id');
+        $dataAbsensi = $this->absensiModel->getDetailAbsensi($idUser)->getResultArray();
+        $data = [
+            'dataAbsensi'       => $dataAbsensi,
+        ];
+        return view('hris/modalAbsensi/detailAbsensi', $data);
+    }
 }

@@ -48,13 +48,30 @@ class AbsensiModel extends Model
             ->get();
         return $data;
     }
-
     public function getCountToday()
     {
         $data = $this->db->table('absensi')
             ->select('absensi.*')
             ->where('date_time =', date('d-m-y'))
             ->where('user_login =', user_id())
+            ->get();
+        return $data;
+    }
+    public function getAdminAbsensi()
+    {
+        $data = $this->db->table('absensi')
+            ->select('absensi.*, users.username, users.email')
+            ->join('users', 'absensi.user_login = users.id')
+            ->groupBy('user_login')
+            ->get();
+        return $data;
+    }
+    public function getDetailAbsensi($idUser)
+    {
+        $data = $this->db->table('absensi')
+            ->select('absensi.*, users.username, users.email')
+            ->join('users', 'absensi.user_login = users.id')
+            ->where('user_login =', $idUser)
             ->get();
         return $data;
     }

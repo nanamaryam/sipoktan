@@ -51,4 +51,12 @@ class MasukModel extends Model
             ->get();
         return $getData;
     }
+    public function getCountDashboard()
+    {
+        $getData = $this->db->table('masuk')
+            ->select('sum(harga_masuk) as nominal')
+            ->where('year(date_masuk)=', date('Y'))
+            ->get();
+        return $getData->getRow();
+    }
 }

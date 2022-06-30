@@ -14,7 +14,7 @@ class SalaryModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'id_karyawan', 'price_salary', 'status'];
+    protected $allowedFields    = ['id', 'id_karyawan', 'price_salary'];
 
     // Dates
     protected $useTimestamps = false;
@@ -47,5 +47,12 @@ class SalaryModel extends Model
             ->join('karyawan', 'salary.id_karyawan = karyawan.id')
             ->get();
         return $dataSalary;
+    }
+    public function getCountNominal()
+    {
+        $getData = $this->db->table('salary')
+            ->select('sum(price_salary) as nominal')
+            ->get();
+        return $getData->getRow();
     }
 }

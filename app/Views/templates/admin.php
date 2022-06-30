@@ -15,7 +15,13 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/pages/datatables.css') ?>">
     <script src="https://kit.fontawesome.com/72eca601e0.js" crossorigin="anonymous"></script>
 
-
+    <link href="<?= base_url('assets/apex/styles.css'); ?>" rel="stylesheet" />
+    <style>
+        #chart {
+            max-width: 650px;
+            margin: 35px auto;
+        }
+    </style>
 </head>
 
 <body>

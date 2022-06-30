@@ -16,7 +16,7 @@ class Panen extends Migration
                 'auto_increment'    => true,
             ],
             'time_today'            => [
-                'type'              => 'timestamp',
+                'type'              => 'date',
             ],
             'id_user'           => [
                 'type'              => 'int',

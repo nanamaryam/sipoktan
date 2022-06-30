@@ -31,9 +31,29 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->group('', ['filter' => 'role:admin,user'], function ($routes) {
+    $routes->get('/dashboard', 'Dashboard::index');
+
+    //user
+    $routes->get('/user', 'Dashboard::userView');
+    $routes->post('/user/image', 'Dashboard::updateImage');
+    $routes->post('/user/username', 'Dashboard::updateFullname');
+});
+
+$routes->group('', ['filter' => 'role:user'], function ($routes) {
+    //absensi
+
+    //panen
+    $routes->get('/panen', 'PanenController::index');
+    $routes->post('/panen/simpan', 'PanenController::simpanPanen');
+    $routes->post('/panen/update/(:num)', 'PanenController::updatePanen/$1');
+    $routes->post('/panen/delete/(:num)', 'PanenController::deletePanen/$1');
+});
 
 $routes->group('', ['filter' => 'role:admin'], function ($routes) {
-    $routes->get('/', 'Dashboard::index');
+    //account
+    $routes->get('/account', 'AccountController::index');
+    $routes->post('/account/update/(:num)', 'AccountController::update/$1');
     //aset
     $routes->get('/aset', 'AsetController::index');
     $routes->post('/aset/simpan', 'AsetController::saveAset');
@@ -84,11 +104,15 @@ $routes->group('', ['filter' => 'role:admin'], function ($routes) {
     //absensi
     $routes->get('/absensi', 'AbsensiController::index');
     $routes->post('/absensi/simpan', 'AbsensiController::simpanAbsensi');
+    $routes->get('/dataabsensi', 'AbsensiController::dataAbsensi');
+    $routes->post('/dataabsensi/detail', 'AbsensiController::dataAbsensiDetail');
     //panen
     $routes->get('/panen', 'PanenController::index');
     $routes->post('/panen/simpan', 'PanenController::simpanPanen');
     $routes->post('/panen/update/(:num)', 'PanenController::updatePanen/$1');
     $routes->post('/panen/delete/(:num)', 'PanenController::deletePanen/$1');
+    $routes->get('/datapanen', 'PanenController::dataPanen');
+    $routes->post('/datapanen/detail', 'PanenController::dataPanenDetail');
     //laba
     $routes->get('/laba', 'LabaController::index');
     $routes->get('/laba/print', 'LabaController::printAllLaba');
@@ -101,8 +125,6 @@ $routes->group('', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('/cost/printfilter', 'CostController::printFilterCost');
     $routes->post('/cost/exportexcel', 'CostController::excelCost');
     $routes->post('/cost/excelfilter', 'CostController::excelCostFilter');
-
-    $routes->get('/report', 'ReportController::index');
 });
 
 

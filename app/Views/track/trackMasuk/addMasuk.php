@@ -53,6 +53,7 @@ Tambah Data Masuk
                 <input type="hidden" value="` + $(d).data('id') + `" name="id_aset[]">
                 <input type="hidden" value="` + $(d).data('jumlah') + `" name="jumlah[]">
                 <input type="hidden" value="` + $(d).data('hargasatuan') + `" name="harga_satuan[]">
+                <input type="hidden" value="` + $(d).data('aset') + `" name="berita_acara[]">
                 <td>` + $(d).data('aset') + `</td>
                 <td>` + $(d).data('kategori') + `</td>
                 <td>

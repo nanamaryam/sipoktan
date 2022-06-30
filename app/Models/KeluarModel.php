@@ -50,4 +50,12 @@ class KeluarModel extends Model
             ->get();
         return $getData;
     }
+    public function getCountDashboard()
+    {
+        $getData = $this->db->table('keluar')
+            ->select('sum(jumlah_keluar) as unit')
+            ->where('year(date_keluar)=', date('Y'))
+            ->get();
+        return $getData->getRow();
+    }
 }

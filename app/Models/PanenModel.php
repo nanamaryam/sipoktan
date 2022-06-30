@@ -49,4 +49,50 @@ class PanenModel extends Model
             ->get();
         return $data;
     }
+    public function getNoUser()
+    {
+        $data = $this->db->table('panen')
+            ->select('panen.*, satuan.satuan')
+            ->join('satuan', 'panen.id_satuan = satuan.id')
+            ->get();
+        return $data;
+    }
+    public function getForAdmin()
+    {
+        $data = $this->db->table('panen')
+            ->select('panen.*, satuan.satuan, users.username, users.email')
+            ->join('satuan', 'panen.id_satuan = satuan.id')
+            ->join('users', 'panen.id_user=users.id')
+            ->groupBy('id_user')
+            ->get();
+        return $data;
+    }
+    public function getForDetail($loginId)
+    {
+        $data = $this->db->table('panen')
+            ->select('panen.*, satuan.satuan, users.username, users.email')
+            ->join('satuan', 'panen.id_satuan = satuan.id')
+            ->join('users', 'panen.id_user=users.id')
+            ->where('id_user =', $loginId)
+            ->get();
+        return $data;
+    }
+    public function toDashboard($year)
+    {
+        $data = $this->db->query("SELECT
+        SUM(CASE When MONTH(time_today)='1' Then pendapatan Else 0 End ) as jan,
+        SUM(CASE When MONTH(time_today)='2' Then pendapatan Else 0 End ) as feb,
+        SUM(CASE When MONTH(time_today)='3' Then pendapatan Else 0 End ) as mar,
+        SUM(CASE When MONTH(time_today)='4' Then pendapatan Else 0 End ) as apr,
+        SUM(CASE When MONTH(time_today)='5' Then pendapatan Else 0 End ) as mei,
+        SUM(CASE When MONTH(time_today)='6' Then pendapatan Else 0 End ) as jun,
+        SUM(CASE When MONTH(time_today)='7' Then pendapatan Else 0 End ) as jul,
+        SUM(CASE When MONTH(time_today)='8' Then pendapatan Else 0 End ) as agust,
+        SUM(CASE When MONTH(time_today)='9' Then pendapatan Else 0 End ) as sept,
+        SUM(CASE When MONTH(time_today)='10' Then pendapatan Else 0 End ) as okt,
+        SUM(CASE When MONTH(time_today)='11' Then pendapatan Else 0 End ) as nov,
+        SUM(CASE When MONTH(time_today)='12' Then pendapatan Else 0 End ) as dse
+        FROM panen where YEAR(time_today)='$year' ")->getRow();
+        return $data;
+    }
 }

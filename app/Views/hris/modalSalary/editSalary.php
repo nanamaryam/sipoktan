@@ -41,7 +41,6 @@ Tambah Data Salary
                                     </div>
                                     <div class="col-md-8 form-group">
                                         <input type="number" class="form-control" name="price_salary" value="<?= $value['price_salary']; ?>">
-                                        <input type="hidden" name="status" value="<?= $value['status']; ?>">
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end mt-4">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>

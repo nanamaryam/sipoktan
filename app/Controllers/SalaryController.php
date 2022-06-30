@@ -6,6 +6,8 @@ use App\Models\SalaryModel;
 
 use App\Models\KaryawanModel;
 
+use App\Models\CostModel;
+
 use App\Controllers\BaseController;
 
 use CodeIgniter\I18n\Time;
@@ -16,10 +18,12 @@ class SalaryController extends BaseController
 {
     protected $salaryModel;
     protected $karyawanModel;
+    protected $costModel;
     public function __construct()
     {
         $this->salaryModel = new SalaryModel();
         $this->karyawanModel = new KaryawanModel();
+        $this->costModel = new CostModel();
     }
     public function index()
     {
@@ -64,7 +68,6 @@ class SalaryController extends BaseController
         $this->salaryModel->save([
             'id_karyawan'           => $this->request->getVar('id_karyawan'),
             'price_salary'          => $this->request->getVar('price_salary'),
-            'status'                => 'Belum Lunas'
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('salary');
@@ -104,7 +107,6 @@ class SalaryController extends BaseController
             'id'                    => $id,
             'id_karyawan'           => $this->request->getVar('id_karyawan'),
             'price_salary'          => $this->request->getVar('price_salary'),
-            'status'                => $this->request->getVar('status'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('salary');

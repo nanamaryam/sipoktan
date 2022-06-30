@@ -48,4 +48,12 @@ class CostModel extends Model
             ->get();
         return $data;
     }
+    public function getCountDashboard()
+    {
+        $getData = $this->db->table('cost')
+            ->select('sum(nominal_cost) as nominal')
+            ->where('year(cost_time)=', date('Y'))
+            ->get();
+        return $getData->getRow();
+    }
 }

@@ -24,6 +24,11 @@ if (d[1] == 'satuan') {
     $("ul.submenu li.satuan").addClass("active");
     $("li.master ul").addClass("active");
 }
+if (d[1] == 'account') {
+    $(".sidebar-menu ul.menu li.master").addClass("active");
+    $("ul.submenu li.akun").addClass("active");
+    $("li.master ul").addClass("active");
+}
 //track
 if (d[1] == 'masuk') {
     $(".sidebar-menu ul.menu li.masuk").addClass("active");
@@ -48,6 +53,16 @@ if (d[1] == 'absensi') {
     $("li.hr ul").addClass("active");
 }
 if (d[1] == 'panen') {
+    $(".sidebar-menu ul.menu li.hr").addClass("active");
+    $("ul.submenu li.panen").addClass("active");
+    $("li.hr ul").addClass("active");
+}
+if (d[1] == 'dataabsensi') {
+    $(".sidebar-menu ul.menu li.hr").addClass("active");
+    $("ul.submenu li.absensi").addClass("active");
+    $("li.hr ul").addClass("active");
+}
+if (d[1] == 'datapanen') {
     $(".sidebar-menu ul.menu li.hr").addClass("active");
     $("ul.submenu li.panen").addClass("active");
     $("li.hr ul").addClass("active");

@@ -32,98 +32,128 @@
             </div>
         </div>
         <div class="sidebar-menu">
+            <div class="dropdown mt-3 mb-3">
+                <center>
+                    <div type="button" data-bs-toggle="modal" data-bs-target="#modalUser">
+                        <div alt="<?= user()->image_user; ?>" style="width: 100px;border-radius:50%; height:100px; background:url('<?= base_url('assets/images/user/' . user()->image_user); ?>') center center; background-size: 150px;background-repeat: no-repeat;"></div>
+                    </div>
+                    <p class="mt-3">Welcome <span style="color:#435ebe;"><?= user()->username; ?></span></p>
+                </center>
+            </div>
+
+
             <ul class="menu">
-                <li class="sidebar-item dashboard">
-                    <a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="sidebar-title">Main</li>
+                <?php if (in_groups('admin') == true) { ?>
+                    <li class="sidebar-item dashboard">
+                        <a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-title">Main</li>
 
-                <li class="sidebar-item master has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Master</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item kebun">
-                            <a href="<?= base_url('kebun') ?>">Kebun</a>
-                        </li>
-                        <li class="submenu-item aset">
-                            <a href="<?= base_url('aset') ?>">Aset</a>
-                        </li>
-                        <li class="submenu-item kategori">
-                            <a href="<?= base_url('kategori') ?>">Kategori</a>
-                        </li>
-                        <li class="submenu-item satuan">
-                            <a href="<?= base_url('satuan') ?>">Satuan</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="sidebar-item master has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Master</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item kebun">
+                                <a href="<?= base_url('kebun') ?>">Kebun</a>
+                            </li>
+                            <li class="submenu-item aset">
+                                <a href="<?= base_url('aset') ?>">Aset</a>
+                            </li>
+                            <li class="submenu-item kategori">
+                                <a href="<?= base_url('kategori') ?>">Kategori</a>
+                            </li>
+                            <li class="submenu-item satuan">
+                                <a href="<?= base_url('satuan') ?>">Satuan</a>
+                            </li>
+                            <li class="submenu-item akun">
+                                <a href="<?= base_url('account') ?>">Akun</a>
+                            </li>
+                        </ul>
+                    </li>
 
+                    <li class="sidebar-title">Track</li>
+                    <li class="sidebar-item masuk">
+                        <a href="<?= base_url('masuk') ?>" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Masuk</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item keluar">
+                        <a href="<?= base_url('keluar') ?>" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Keluar</span>
+                        </a>
+                    </li>
 
+                    <li class="sidebar-title">HRIS</li>
+                    <li class="sidebar-item hr has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-pentagon-fill"></i>
+                            <span>HR</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item karyawan">
+                                <a href="<?= base_url('karyawan') ?>">Karyawan</a>
+                            </li>
+                            <li class="submenu-item salary">
+                                <a href="<?= base_url('salary') ?>">Salary</a>
+                            </li>
+                            <li class="submenu-item absensi">
+                                <a href="<?= base_url('dataabsensi') ?>">Absensi</a>
+                            </li>
+                            <li class="submenu-item panen">
+                                <a href="<?= base_url('datapanen') ?>">Panen</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                <li class="sidebar-title">Track</li>
-                <li class="sidebar-item masuk">
-                    <a href="<?= base_url('masuk') ?>" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Masuk</span>
-                    </a>
-                </li>
-                <li class="sidebar-item keluar">
-                    <a href="<?= base_url('keluar') ?>" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Keluar</span>
-                    </a>
-                </li>
+                    <li class="sidebar-title">Finance</li>
 
-                <li class="sidebar-title">HRIS</li>
+                    <li class="sidebar-item laba">
+                        <a href="<?= base_url('laba') ?>" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-bar-graph"></i>
+                            <span>Laba</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-item hr has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-pentagon-fill"></i>
-                        <span>HR</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item karyawan">
-                            <a href="<?= base_url('karyawan') ?>">Karyawan</a>
-                        </li>
-                        <li class="submenu-item salary">
-                            <a href="<?= base_url('salary') ?>">Salary</a>
-                        </li>
-                        <li class="submenu-item absensi">
-                            <a href="<?= base_url('absensi') ?>">Absensi</a>
-                        </li>
-                        <li class="submenu-item panen">
-                            <a href="<?= base_url('panen') ?>">Panen</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="sidebar-item cost">
+                        <a href="<?= base_url('cost') ?>" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-bar-graph"></i>
+                            <span>Cost</span>
+                        </a>
+                    </li>
+                <?php } ?>
 
-                <li class="sidebar-title">Finance</li>
-
-                <li class="sidebar-item laba">
-                    <a href="<?= base_url('laba') ?>" class='sidebar-link'>
-                        <i class="bi bi-envelope-fill"></i>
-                        <span>Laba</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item cost">
-                    <a href="<?= base_url('cost') ?>" class='sidebar-link'>
-                        <i class="bi bi-chat-dots-fill"></i>
-                        <span>Cost</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item report">
-                    <a href="<?= base_url('report') ?>" class='sidebar-link'>
-                        <i class="bi bi-image-fill"></i>
-                        <span>Report</span>
-                    </a>
-                </li>
+                <?php if (in_groups('admin') == false) { ?>
+                    <li class="sidebar-item dashboard">
+                        <a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item hr has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-pentagon-fill"></i>
+                            <span>User</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item absensi">
+                                <a href="<?= base_url('absensi') ?>">Absensi</a>
+                            </li>
+                            <li class="submenu-item panen">
+                                <a href="<?= base_url('panen') ?>">Panen</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
 </div>
+
+<?= $this->include('dashboard/modalUser'); ?>

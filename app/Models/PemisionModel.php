@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LabaModel extends Model
+class PemisionModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'laba';
+    protected $table            = 'auth_groups_users';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'laba_time', 'acara_berita', 'nominal'];
+    protected $allowedFields    = ['id', 'user_id', 'group_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,20 +40,23 @@ class LabaModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getFilterLaba($dateStart, $dateEnd)
+    public function getGroup()
     {
-        $data = $this->db->table('laba')
-            ->select('laba.*')
-            ->where("laba_time BETWEEN '{$dateStart}' AND '{$dateEnd}'")
+        $query =  $this->db->table('auth_groups_users')
+            ->select('users.*, auth_groups_users.user_id, auth_groups_users.group_id, auth_groups_users.id as auth_groups_users_id, auth_groups.name, auth_groups.description, auth_groups.id as group_id')
+            ->join('users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups_users.group_id = auth_groups.id')
             ->get();
-        return $data;
+        return $query;
     }
-    public function getCountDashboard()
+    public function getnamagroup()
     {
-        $getData = $this->db->table('laba')
-            ->select('sum(nominal) as nominal')
-            ->where('year(laba_time)=', date('Y'))
-            ->get();
-        return $getData->getRow();
+        $Usergroup = $this->db->table('auth_groups')->get();
+        return $Usergroup;
+    }
+    public function getkumpulanuser()
+    {
+        $kumpulanUser = $this->db->table('users')->get();
+        return $kumpulanUser;
     }
 }
