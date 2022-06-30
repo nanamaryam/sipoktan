@@ -42,7 +42,8 @@ $routes->group('', ['filter' => 'role:admin,user'], function ($routes) {
 
 $routes->group('', ['filter' => 'role:user'], function ($routes) {
     //absensi
-
+    $routes->get('/absensi', 'AbsensiController::index');
+    $routes->post('/absensi/simpan', 'AbsensiController::simpanAbsensi');
     //panen
     $routes->get('/panen', 'PanenController::index');
     $routes->post('/panen/simpan', 'PanenController::simpanPanen');
@@ -102,15 +103,9 @@ $routes->group('', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('/salary/delete/(:num)', 'SalaryController::deleteSalary/$1');
     $routes->get('/salary/print', 'SalaryController::printSalary');
     //absensi
-    $routes->get('/absensi', 'AbsensiController::index');
-    $routes->post('/absensi/simpan', 'AbsensiController::simpanAbsensi');
     $routes->get('/dataabsensi', 'AbsensiController::dataAbsensi');
     $routes->post('/dataabsensi/detail', 'AbsensiController::dataAbsensiDetail');
     //panen
-    $routes->get('/panen', 'PanenController::index');
-    $routes->post('/panen/simpan', 'PanenController::simpanPanen');
-    $routes->post('/panen/update/(:num)', 'PanenController::updatePanen/$1');
-    $routes->post('/panen/delete/(:num)', 'PanenController::deletePanen/$1');
     $routes->get('/datapanen', 'PanenController::dataPanen');
     $routes->post('/datapanen/detail', 'PanenController::dataPanenDetail');
     //laba

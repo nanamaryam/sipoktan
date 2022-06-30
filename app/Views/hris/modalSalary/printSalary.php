@@ -123,7 +123,6 @@
                                 <th>Gabung</th>
                                 <th>Nama</th>
                                 <th>Salary</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <?php
@@ -139,7 +138,6 @@
                                     <td><?= $value['date_gabung']; ?></td>
                                     <td><?= $value['nama_karyawan']; ?></td>
                                     <td><?= Rupiah($value['price_salary']); ?></td>
-                                    <td><?= $value['status']; ?></td>
                                 </tr>
                             </tbody>
                         <?php endforeach; ?>
