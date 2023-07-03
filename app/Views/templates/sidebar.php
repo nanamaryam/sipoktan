@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
                     <a href="index.html">
-                        <h3>sipak</h3>
+                        <h3>sipoktan</h3>
                     </a>
                 </div>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -100,9 +100,9 @@
                             <li class="submenu-item karyawan">
                                 <a href="<?= base_url('karyawan') ?>">Karyawan</a>
                             </li>
-                            <li class="submenu-item salary">
+                            <!-- <li class="submenu-item salary">
                                 <a href="<?= base_url('salary') ?>">Salary</a>
-                            </li>
+                            </li> -->
                             <li class="submenu-item absensi">
                                 <a href="<?= base_url('dataabsensi') ?>">Absensi</a>
                             </li>
@@ -117,14 +117,14 @@
                     <li class="sidebar-item laba">
                         <a href="<?= base_url('laba') ?>" class='sidebar-link'>
                             <i class="bi bi-file-earmark-bar-graph"></i>
-                            <span>Laba</span>
+                            <span>Rekap Panen</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item cost">
                         <a href="<?= base_url('cost') ?>" class='sidebar-link'>
                             <i class="bi bi-file-earmark-bar-graph"></i>
-                            <span>Cost</span>
+                            <span>Pengeluaran</span>
                         </a>
                     </li>
                 <?php } ?>

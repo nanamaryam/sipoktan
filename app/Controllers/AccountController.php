@@ -32,7 +32,7 @@ class AccountController extends BaseController
     public function update($id)
     {
         $this->permissionModel->save([
-            'id_role'            => $id,
+            'id'                 => $id,
             'user_id'            => $this->request->getVar('users_simpan'),
             'group_id'           => $this->request->getVar('role_simpan'),
         ]);

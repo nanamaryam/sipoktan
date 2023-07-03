@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Kebun
+sipoktan | Kebun
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Kebun
@@ -26,7 +26,7 @@ Kebun
                             <th>Lokasi</th>
                             <th>Luas</th>
                             <th>Tahun Beli</th>
-                            <th>Jenis Tanaman</th>
+                            <th>Nama Pemilik</th>
                             <th>Action</th>
                         </tr>
                     </thead>

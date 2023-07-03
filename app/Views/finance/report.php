@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Report
+sipoktan | Report
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Report

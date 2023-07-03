@@ -9,12 +9,11 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail = 'ilham.bintang@anandanesia.com';
-
+    public $fromEmail = 'z';
     /**
      * @var string
      */
-    public $fromName = 'sipak';
+    public $fromName = 'sipoktan';
 
     /**
      * @var string
@@ -47,21 +46,21 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost = 'mail.anandanesia.com';
+    public $SMTPHost = 'smtp.gmail.com';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser = 'ilham.bintang@anandanesia.com';
+    public $SMTPUser = 'maryamas.10.dms@gmail.com';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = 'Zlnzee!!171199';
+    public $SMTPPass = 'stxmwwnveammzqyr';
 
     /**
      * SMTP Port

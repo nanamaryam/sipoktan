@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Panen
+sipoktan | Panen
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Panen

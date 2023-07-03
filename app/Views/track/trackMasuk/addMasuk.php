@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Masuk
+sipoktan | Masuk
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Tambah Data Masuk

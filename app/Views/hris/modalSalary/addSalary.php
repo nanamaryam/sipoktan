@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Salary
+sipoktan | Salary
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Tambah Data Salary

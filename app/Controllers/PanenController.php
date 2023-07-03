@@ -36,21 +36,25 @@ class PanenController extends BaseController
         ];
         return view('hris/panen', $data);
     }
+    public $hargaKilo;
+    public $totalHarga;
     public function simpanPanen()
     {
+        $hargaKilo = $this->request->getVar('harga_perkilo');
+        $totalHarga = $this->request->getVar('berat');
         $this->panenModel->save([
             'id_user'           => user_id(),
             'time_today'        => date('Y-m-d'),
             'harga_perkilo'     => $this->request->getVar('harga_perkilo'),
             'berat'             => $this->request->getVar('berat'),
             'id_satuan'         => $this->request->getVar('id_satuan'),
-            'pendapatan'        => $this->request->getVar('pendapatan'),
+            'pendapatan'        => $hargaKilo*$totalHarga,
             'ket_panen'         => $this->request->getVar('ket_panen')
         ]);
         $this->labaModel->save([
             'laba_time'         => date('Y-m-d'),
             'acara_berita'      => 'Panen ' . user()->username,
-            'nominal'           => $this->request->getVar('pendapatan'),
+            'nominal'           => $hargaKilo*$totalHarga,
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('panen');
@@ -62,7 +66,7 @@ class PanenController extends BaseController
             'id_user'           => user_id(),
             'harga_perkilo'     => $this->request->getVar('harga_perkilo'),
             'berat'             => $this->request->getVar('berat'),
-            'pendapatan'        => $this->request->getVar('pendapatan'),
+            'pendapatan'        => $hargaKilo*$totalHarga,
             'ket_panen'         => $this->request->getVar('ket_panen')
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diupdate');

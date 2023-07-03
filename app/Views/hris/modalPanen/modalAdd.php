@@ -29,13 +29,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">Harga Total</label>
                         <div class="input-group">
                             <span class="input-group-text">IDR</span>
                             <input type="number" class="form-control" name="pendapatan" required>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="">Keterangan</label>
                         <textarea name="ket_panen" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>

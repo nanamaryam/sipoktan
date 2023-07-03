@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Satuan
+sipoktan | Satuan
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Satuan

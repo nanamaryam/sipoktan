@@ -1,9 +1,9 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Cost
+sipoktan | Pengeluaran
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
-Cost
+Pengeluaran
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <section class="section">

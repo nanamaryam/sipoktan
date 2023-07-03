@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Dashboard
+sipoktan | Dashboard
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Dashboard
@@ -34,7 +34,7 @@ function Rupiah($angka)
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-lg-3 col-md-6">
+            <!-- <div class="col-6 col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body px-3 py-4-5">
                         <div class="row">
@@ -50,7 +50,7 @@ function Rupiah($angka)
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-6 col-lg-3 col-md-6">
                 <div class="card">
                     <div class="card-body px-3 py-4-5">
@@ -61,8 +61,8 @@ function Rupiah($angka)
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Total Laba</h6>
-                                <h6 class="font-extrabold mb-0"><?= Rupiah($totalLaba - $totalCost); ?></h6>
+                                <h6 class="text-muted font-semibold">Rekap Panen</h6>
+                                <h6 class="font-extrabold mb-0"><?= Rupiah($totalLaba); ?></h6>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ function Rupiah($angka)
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Total Cost</h6>
+                                <h6 class="text-muted font-semibold">Total Pengeluaran</h6>
                                 <h6 class="font-extrabold mb-0"><?= Rupiah($totalCost); ?></h6>
                             </div>
                         </div>

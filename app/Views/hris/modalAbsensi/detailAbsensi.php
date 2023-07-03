@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Absensi
+sipoktan | Absensi
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Detail Absensi
@@ -24,7 +24,6 @@ Detail Absensi
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
-                                <?php $no = 1; ?>
                                 <?php foreach ($dataAbsensi as $value) : ?>
                                     <tr>
                                         <td><?= $value['username']; ?></td>

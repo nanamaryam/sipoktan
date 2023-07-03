@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | User
+sipoktan | User
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 User

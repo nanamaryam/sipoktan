@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Aset
+sipoktan | Aset
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Aset

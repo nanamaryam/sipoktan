@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Jenis Tanaman</label>
+                            <label for="">Nama Pemilik</label>
                             <input type="text" name="jenis_tanaman" class="form-control" value="<?= $value['jenis_tanaman']; ?>">
                         </div>
                         <div class="form-group">

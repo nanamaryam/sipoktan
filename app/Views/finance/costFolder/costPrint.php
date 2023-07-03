@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Data Cost</title>
+    <title>Data Pengeluaran</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/logo/favicon.svg">
     <link rel="shortcut icon" href="<?= base_url('assets/images/logo/favicon.svg') ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url('assets/images/logo/favicon.png') ?>" type="image/png">
@@ -114,7 +114,7 @@
         <div class="page">
             <div class="subpage">
                 <center>
-                    <h2>List Data Cost</h2>
+                    <h2>List Data Pengeluaran</h2>
                 </center>
                 <div class="table-responsive">
                     <table id="customers">

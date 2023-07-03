@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Absensi
+sipoktan | Absensi
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Absensi
@@ -24,11 +24,6 @@ Absensi
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
-                                <?php
-
-                                use Kint\Zval\Value;
-
-                                $no = 1; ?>
                                 <?php foreach ($dataAbsensi as $value) : ?>
                                     <tr>
                                         <td><?= $value['username']; ?></td>

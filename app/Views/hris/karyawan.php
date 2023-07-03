@@ -1,6 +1,6 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Karyawan
+sipoktan | Karyawan
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
 Karyawan

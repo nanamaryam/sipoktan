@@ -114,7 +114,7 @@
         <div class="page">
             <div class="subpage">
                 <center>
-                    <h2>List Data Laba</h2>
+                    <h2>List Data Panen</h2>
                 </center>
                 <div class="table-responsive">
                     <table id="customers">

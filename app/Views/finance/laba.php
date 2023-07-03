@@ -1,9 +1,9 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('title'); ?>
-sipak | Laba
+sipoktan | Rekap Panen
 <?= $this->endSection(); ?>
 <?= $this->section('titlePage'); ?>
-Laba
+Rekap Panen
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <section class="section">
