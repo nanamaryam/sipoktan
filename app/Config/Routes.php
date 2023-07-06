@@ -34,6 +34,13 @@ $routes->setAutoRoute(true);
 $routes->group('', ['filter' => 'role:admin,user'], function ($routes) {
     $routes->get('/dashboard', 'Dashboard::index');
 
+    //kebun
+    $routes->get('/kebun', 'KebunController::index');
+    $routes->post('/kebun/detail', 'KebunController::detailKebun');
+    $routes->post('/kebun/simpan', 'KebunController::saveKebun');
+    $routes->post('/kebun/update/(:num)', 'KebunController::updateKebun/$1');
+    $routes->post('/kebun/delete/(:num)', 'KebunController::deleteKebun/$1');
+
     //user
     $routes->get('/user', 'Dashboard::userView');
     $routes->post('/user/image', 'Dashboard::updateImage');
@@ -44,6 +51,7 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     //absensi
     $routes->get('/absensi', 'AbsensiController::index');
     $routes->post('/absensi/simpan', 'AbsensiController::simpanAbsensi');
+    $routes->get('/kebun/detail', 'KebunController::detailKebun');
     //panen
     $routes->get('/panen', 'PanenController::index');
     $routes->post('/panen/simpan', 'PanenController::simpanPanen');
@@ -60,16 +68,17 @@ $routes->group('', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('/aset/simpan', 'AsetController::saveAset');
     $routes->post('/aset/update/(:num)', 'AsetController::updateAset/$1');
     $routes->post('/aset/delete/(:num)', 'AsetController::deleteAset/$1');
-    //kebun
-    $routes->get('/kebun', 'KebunController::index');
-    $routes->post('/kebun/simpan', 'KebunController::saveKebun');
-    $routes->post('/kebun/update/(:num)', 'KebunController::updateKebun/$1');
-    $routes->post('/kebun/delete/(:num)', 'KebunController::deleteKebun/$1');
+    
     //kategori
     $routes->get('/kategori', 'KategoriController::index');
     $routes->post('/kategori/simpan', 'KategoriController::saveKategori');
     $routes->post('/kategori/update/(:num)', 'KategoriController::updateKategori/$1');
     $routes->post('/kategori/delete/(:num)', 'KategoriController::deleteKategori/$1');
+     //kategori
+     $routes->get('/comodity', 'ComodityController::index');
+     $routes->post('/comodity/simpan', 'ComodityController::saveComodity');
+     $routes->post('/comodity/update/(:num)', 'ComodityController::updateComodity/$1');
+     $routes->post('/comodity/delete/(:num)', 'ComodityController::deleteComodity/$1');
     //satuan
     $routes->get('/satuan', 'SatuanController::index');
     $routes->post('/satuan/simpan', 'SatuanController::saveSatuan');

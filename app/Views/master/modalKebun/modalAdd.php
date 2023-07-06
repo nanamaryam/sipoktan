@@ -1,4 +1,5 @@
-<div class="modal fade text-left" id="addKebun" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+<div class="modal fade text-left" id="addKebun" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialogmodal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -21,19 +22,28 @@
                             <select name="id_satuan" class="input-group-text" required>
                                 <option value="">--Satuan--</option>
                                 <?php foreach ($dataSatuan as $b) : ?>
-                                    <option value="<?= $b['id']; ?>"><?= $b['satuan']; ?></option>
+                                <option value="<?= $b['id']; ?>"><?= $b['satuan']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="">Comodity</label>
+                        <select name="id_comodity" id="" class="form-control">
+                            <option value="">--Comodity--</option>
+                            <?php foreach ($dataComodity as $a) : ?>
+                            <option value="<?= $a['id']; ?>"><?= $a['comodity']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="">Nama Pemilik</label>
                         <input type="text" name="jenis_tanaman" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Lokasi</label>
-                        <textarea name="lokasi" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea name="lokasi" class="form-control" id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

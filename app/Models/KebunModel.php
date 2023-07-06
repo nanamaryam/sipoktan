@@ -14,7 +14,7 @@ class KebunModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'lokasi', 'luas', 'id_satuan', 'tahun', 'jenis_tanaman'];
+    protected $allowedFields    = ['id', 'lokasi', 'luas', 'id_satuan', 'id_comodity', 'id_user', 'tahun', 'jenis_tanaman'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,12 +40,36 @@ class KebunModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function dataKebun()
+    public function dataKebun_all()
     {
         $getData = $this->db->table('kebun')
-            ->select('satuan.satuan, kebun.*')
+            ->select('satuan.satuan, comodity.comodity, kebun.*')
             ->join('satuan', 'kebun.id_satuan = satuan.id')
+            ->join('comodity', 'kebun.id_comodity = comodity.id')
+            ->orderBy('kebun.id', 'desc')
             ->get();
-        return $getData;;
+        return $getData;
+    }
+    public function dataKebun($id_comodity)
+    {
+        $getData = $this->db->table('kebun')
+            ->select('satuan.satuan, comodity.comodity, kebun.*')
+            ->join('satuan', 'kebun.id_satuan = satuan.id')
+            ->join('comodity', 'kebun.id_comodity = comodity.id')
+            ->orderBy('kebun.id', 'desc')
+            ->where('id_comodity =', $id_comodity)
+            ->get();
+        return $getData;
+    }
+    public function dataKebun_user()
+    {
+        $getData = $this->db->table('kebun')
+            ->select('satuan.satuan, comodity.comodity, kebun.*')
+            ->join('satuan', 'kebun.id_satuan = satuan.id')
+            ->join('comodity', 'kebun.id_comodity = comodity.id')
+            ->orderBy('kebun.id', 'desc')
+            ->where('kebun.id_user =', user()->id)
+            ->get();
+        return $getData;
     }
 }

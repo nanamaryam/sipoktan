@@ -36,7 +36,7 @@ class KaryawanController extends BaseController
     public function addKaryawan()
     {
         session();
-        $dataKebun = $this->kebunModel->dataKebun()->getResultArray();
+        $dataKebun = $this->kebunModel->dataKebun_all()->getResultArray();
         $data = [
             'dataKebun'         => $dataKebun,
             'validation'        => \Config\Services::validation(),
@@ -83,7 +83,7 @@ class KaryawanController extends BaseController
     {
         session();
         $dataKaryawan = $this->karyawanModel->getIdKaryawan($id)->getResultArray();
-        $dataKebun = $this->kebunModel->dataKebun()->getResultArray();
+        $dataKebun = $this->kebunModel->dataKebun_all()->getResultArray();
         $data = [
             'dataKaryawan'      => $dataKaryawan,
             'dataKebun'         => $dataKebun,

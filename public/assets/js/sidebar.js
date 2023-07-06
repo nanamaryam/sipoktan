@@ -19,6 +19,11 @@ if (d[1] == 'kategori') {
     $("ul.submenu li.kategori").addClass("active");
     $("li.master ul").addClass("active");
 }
+if (d[1] == 'comodity') {
+    $(".sidebar-menu ul.menu li.master").addClass("active");
+    $("ul.submenu li.comodity").addClass("active");
+    $("li.master ul").addClass("active");
+}
 if (d[1] == 'satuan') {
     $(".sidebar-menu ul.menu li.master").addClass("active");
     $("ul.submenu li.satuan").addClass("active");

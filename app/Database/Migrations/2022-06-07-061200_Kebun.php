@@ -30,6 +30,16 @@ class Kebun extends Migration
                 'constraint'        => 11,
                 'unsigned'          => true,
             ],
+            'id_comodity'             => [
+                'type'              => 'int',
+                'constraint'        => 11,
+                'unsigned'          => true,
+            ],
+            'id_user'             => [
+                'type'              => 'int',
+                'constraint'        => 11,
+                'unsigned'          => true,
+            ],
             'tahun'                 => [
                 'type'              => 'date'
             ],
@@ -40,6 +50,8 @@ class Kebun extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('id_satuan', 'satuan', 'id');
+        $this->forge->addForeignKey('id_comodity', 'comodity', 'id');
+        $this->forge->addForeignKey('id_user', 'users', 'id');
         $this->forge->createTable('kebun');
     }
 
