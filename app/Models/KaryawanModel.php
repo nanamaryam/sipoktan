@@ -43,20 +43,25 @@ class KaryawanModel extends Model
     public function getAllKaryawan()
     {
         $getData = $this->db->table('karyawan')
-            ->select('kebun.lokasi, kebun.luas, kebun.id_satuan, satuan.satuan, karyawan.*')
-            ->join('kebun', 'karyawan.id_kebun = kebun.id')
+            ->select('kebun.lokasi, GROUP_CONCAT(CONCAT(kebun.luas, " ", satuan.satuan) SEPARATOR ",") AS luas, GROUP_CONCAT(kebun.lokasi SEPARATOR ",") AS lokasi, karyawan.*')
+            ->join('kebun', 'FIND_IN_SET(kebun.id, karyawan.id_kebun) > 0')
             ->join('satuan', 'kebun.id_satuan = satuan.id')
+            ->groupBy('karyawan.id, karyawan.nama_karyawan')
             ->get();
+
         return $getData;
+
     }
+    
     public function getIdKaryawan($id)
     {
         $getData = $this->db->table('karyawan')
-            ->select('kebun.lokasi, kebun.luas, kebun.id_satuan, satuan.satuan, karyawan.*')
-            ->join('kebun', 'karyawan.id_kebun = kebun.id')
-            ->join('satuan', 'kebun.id_satuan = satuan.id')
-            ->where('karyawan.id =', $id)
-            ->get();
+        ->select('kebun.lokasi, GROUP_CONCAT(CONCAT(kebun.lokasi, " ", kebun.luas, " ", satuan.satuan) SEPARATOR " | ") AS lokasi, karyawan.*')
+        ->join('kebun', 'FIND_IN_SET(kebun.id, karyawan.id_kebun) > 0')
+        ->join('satuan', 'kebun.id_satuan = satuan.id')
+        ->groupBy('karyawan.id, karyawan.nama_karyawan')
+        ->where('karyawan.id =', $id)
+        ->get();
         return $getData;
     }
 }

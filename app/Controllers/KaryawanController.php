@@ -26,6 +26,7 @@ class KaryawanController extends BaseController
         session();
         $dataKaryawan = $this->karyawanModel->getAllKaryawan()->getResultArray();
         $countKaryawan = count($this->karyawanModel->getAllKaryawan()->getResultArray());
+       
         $data = [
             'dataKaryawan'      => $dataKaryawan,
             'countKaryawan'     => $countKaryawan,

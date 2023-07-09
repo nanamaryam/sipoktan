@@ -134,6 +134,14 @@ class KebunController extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('kebun/detail');
     }
+    public function printKebun()
+    {
+        $dataKebun = $this->kebunModel->dataKebun_all()->getResultArray();
+        $data = [
+            'dataKebun'  => $dataKebun,
+        ];
+        return view('master/modalKebun/printKebun', $data);
+    }
     public function detailKebun() {
         $id_comodity = $this->request->getVar('id_comodity');
         if (in_groups('user') == true) {

@@ -36,6 +36,7 @@ $routes->group('', ['filter' => 'role:admin,user'], function ($routes) {
 
     //kebun
     $routes->get('/kebun', 'KebunController::index');
+    $routes->get('/kebun/print', 'KebunController::printKebun');
     $routes->post('/kebun/detail', 'KebunController::detailKebun');
     $routes->post('/kebun/simpan', 'KebunController::saveKebun');
     $routes->post('/kebun/update/(:num)', 'KebunController::updateKebun/$1');
@@ -119,6 +120,7 @@ $routes->group('', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('/datapanen/detail', 'PanenController::dataPanenDetail');
     //laba
     $routes->get('/laba', 'LabaController::index');
+    $routes->post('/laba/detail', 'LabaController::detailLaba');
     $routes->get('/laba/print', 'LabaController::printAllLaba');
     $routes->post('/laba/printfilter', 'LabaController::printFilterLaba');
     $routes->post('/laba/exportexcel', 'LabaController::excelLaba');

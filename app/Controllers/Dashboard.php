@@ -42,6 +42,8 @@ class Dashboard extends BaseController
         $totalMasuk = $this->modelMasuk->getCountDashboard()->nominal;
         $totalUnitKeluar = $this->modelKeluar->getCountDashboard()->unit;
         $totalLaba = $this->modelLaba->getCountDashboard()->nominal;
+        $totalBerat = $this->modelLaba->getCountDashboard()->total_berat;
+        $totalBerat_user = $this->modelPanen->getAllPanen()->getResult()[0]->total_panen;
         $totalSalary = $this->salaryModel->getCountNominal()->nominal;
         $totalCost = $this->modelCost->getCountDashboard()->nominal + $totalSalary;
 
@@ -52,6 +54,8 @@ class Dashboard extends BaseController
             'totalUnitKeluar'   => $totalUnitKeluar,
             'totalLaba'         => $totalLaba,
             'totalCost'         => $totalCost,
+            'totalBerat'        => $totalBerat,
+            'totalBerat_user'   => $totalBerat_user
         ];
         return view('dashboard/index', $data);
     }

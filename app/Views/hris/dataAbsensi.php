@@ -20,22 +20,27 @@ Absensi
                                 <tr>
                                     <th>User</th>
                                     <th>Email</th>
+                                    <th>Absensi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
                                 <?php foreach ($dataAbsensi as $value) : ?>
-                                    <tr>
-                                        <td><?= $value['username']; ?></td>
-                                        <td><?= $value['email']; ?></td>
-                                        <td>
-                                            <form action="<?= base_url('dataabsensi/detail'); ?>" method="POST">
-                                                <?= csrf_field() ?>
-                                                <input type="hidden" name="user_id" value="<?= $value['user_login']; ?>">
-                                                <button type="submit" class="btn btn-info rounded-pill btn-sm" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Detail" target="_blank"><i class="bi bi-info"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td><?= $value['username']; ?></td>
+                                    <td><?= $value['email']; ?></td>
+                                    <td><?= $value['login_count']; ?></td>
+                                    <td>
+                                        <form action="<?= base_url('dataabsensi/detail'); ?>" method="POST">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="user_id" value="<?= $value['user_login']; ?>">
+                                            <button type="submit" class="btn btn-info rounded-pill btn-sm"
+                                                data-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-original-title="Detail" target="_blank"><i
+                                                    class="bi bi-info"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

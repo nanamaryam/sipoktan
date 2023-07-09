@@ -4,7 +4,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Data Karyawan</title>
+    <title>Data Kebun</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/logo/favicon.svg">
     <link rel="shortcut icon" href="<?= base_url('assets/images/logo/favicon.svg') ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url('assets/images/logo/favicon.png') ?>" type="image/png">
@@ -115,38 +115,40 @@ body {
         <div class="page">
             <div class="subpage">
                 <center>
-                    <h2>List Data Panen</h2>
+                    <h2>List Data Kebun</h2>
                 </center>
                 <div class="table-responsive">
                     <table id="customers">
                         <thead>
                             <tr>
-                                <th>Waktu</th>
-                                <th>Berita Acara</th>
-                                <th>Panen</th>
-                                <th>Berat</th>
-                                <th>Nominal</th>
+                                <th>No</th>
+                                <th>Lokasi</th>
+                                <th>Comodity</th>
+                                <th>Luas</th>
+                                <th>Tahun Beli</th>
+                                <th>Nama Pemilik</th>
                             </tr>
                         </thead>
-                        <?php
-                        function Rupiah($angka)
-                        {
-                            $hasil = "Rp " . number_format($angka, 2, ',', '.');
-                            return $hasil;
-                        }
-                        foreach ($dataLaba as $value) :
-                        ?>
+                        <?php $no=1 ?>
+                        <?php foreach ($dataKebun as $value):
+                                if ($value['satuan'] == 'ru') {
+                                    $luasRu = $value['luas'];
+                                    $satuanMeter = 'm²';
+                                    $luasMeter = $luasRu * 14;
+                                } else {
+                                    $satuanMeter = '';
+                                    $luasMeter = '';
+                                } ?>
                         <tbody style="text-align: center;">
                             <tr>
-                                <td><?= $value['laba_time'] ?></td>
-                                <td><?= $value['acara_berita'] ?></td>
-                                <td>
-                                    <?=$value['ket_panen']?>
+                                <td><?= $no++ ?></td>
+                                <td><?= $value['lokasi'] ?></td>
+                                <td><?= $value['comodity'] ?></td>
+                                <td><?= $value['luas'] ?> <?= $value['satuan'] ?> <?= '/ ', $luasMeter ?>
+                                    <?= $satuanMeter ?>
                                 </td>
-                                <td>
-                                    <?=$value['berat_kg']?> Kg
-                                </td>
-                                <td><?= Rupiah($value['nominal']) ?></td>
+                                <td><?= $value['tahun'] ?></td>
+                                <td><?= $value['jenis_tanaman'] ?></td>
                             </tr>
                         </tbody>
                         <?php endforeach; ?>

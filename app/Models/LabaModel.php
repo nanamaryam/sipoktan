@@ -14,7 +14,7 @@ class LabaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'laba_time', 'acara_berita', 'nominal'];
+    protected $allowedFields    = ['id', 'laba_time', 'berat_kg', 'ket_panen', 'acara_berita', 'nominal'];
 
     // Dates
     protected $useTimestamps = false;
@@ -48,10 +48,20 @@ class LabaModel extends Model
             ->get();
         return $data;
     }
+    public function getAlldata()
+    {
+        $data = $this->db->table('laba')
+            ->select('COUNT(laba.acara_berita) AS laba_count, SUM(laba.berat_kg) AS total_berat, laba.*')
+            ->groupBy('laba.acara_berita')
+            ->get();
+        
+        return $data;
+    }
+    
     public function getCountDashboard()
     {
         $getData = $this->db->table('laba')
-            ->select('sum(nominal) as nominal')
+            ->select('sum(nominal) as nominal, sum(berat_kg) as total_berat')
             ->where('year(laba_time)=', date('Y'))
             ->get();
         return $getData->getRow();

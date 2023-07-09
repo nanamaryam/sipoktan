@@ -43,7 +43,7 @@ class PanenModel extends Model
     public function getAllPanen()
     {
         $data = $this->db->table('panen')
-            ->select('panen.*, satuan.satuan')
+            ->select(' sum(panen.berat) as total_panen ,panen.*, satuan.satuan')
             ->join('satuan', 'panen.id_satuan = satuan.id')
             ->where('id_user =', user_id())
             ->get();

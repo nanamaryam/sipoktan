@@ -8,17 +8,23 @@ Tambah Data Karyawan
 <?= $this->section('content'); ?>
 <section class="section">
     <?php if ($validation->hasError('foto_karyawan') or $validation->hasError('id_kebun')) { ?>
-        <div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> <?= $validation->listErrors() ?></div>
+    <div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i>
+        <?= $validation->listErrors() ?></div>
     <?php } ?>
     <?php if (session()->getFlashdata('pesan')) : ?>
-        <div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> <?= session()->getFlashdata('pesan') ?></div>
+    <div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i>
+        <?= session()->getFlashdata('pesan') ?></div>
     <?php endif; ?>
     <form action="<?= base_url('karyawan/simpan'); ?>" method="POST" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('karyawan'); ?>" type="button" class="btn btn-primary rounded-pill" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Kembali"><i class="bi bi-caret-left"></i></a>
-                <a href="<?= base_url('karyawan/addkaryawan'); ?>" type="button" class="btn btn-primary rounded-pill ml-2" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reset"><i class="bi bi-arrow-clockwise"></i></a>
+                <a href="<?= base_url('karyawan'); ?>" type="button" class="btn btn-primary rounded-pill"
+                    data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Kembali"><i
+                        class="bi bi-caret-left"></i></a>
+                <a href="<?= base_url('karyawan/addkaryawan'); ?>" type="button"
+                    class="btn btn-primary rounded-pill ml-2" data-toggle="tooltip" data-bs-placement="top"
+                    data-bs-original-title="Reset"><i class="bi bi-arrow-clockwise"></i></a>
             </div>
             <div class="card-body mt-4">
                 <div class="row">
@@ -28,12 +34,14 @@ Tambah Data Karyawan
                             <input type="hidden" id="idKebun" value="" name="id_kebun">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="" id="dataKebun" readonly>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalKebun" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Pilih Data Kebun"><i class="bi bi-search"></i></button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modalKebun" data-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-original-title="Pilih Data Kebun"><i class="bi bi-search"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="">Nama Karyawan</label>
-                            <input type="text" class="form-control" name="nama_karyawan">
+                            <input type="text" class="form-control" name="nama_karyawan[]">
                         </div>
                         <div class="form-group">
                             <label for="">Tahun Gabung</label>
@@ -66,7 +74,8 @@ Tambah Data Karyawan
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1"
+                                rows="3"></textarea>
                         </div>
                     </div>
                 </div>
@@ -79,17 +88,34 @@ Tambah Data Karyawan
 </section>
 <?= $this->include('hris/modalKaryawan/modalView'); ?>
 <?php foreach ($dataKebun as $value) : ?>
-    <script>
-        function tampilData<?= $value['id'] ?>() {
-            var d = '#select<?= $value['id'] ?>';
-            var idKebun = $(d).data('id');
-            var lokasiLuas = $(d).data('lokasi') + ' ' + $(d).data('luas') + ' ' + $(d).data('satuan');
-            var satuan = $(d).data('satuan');
+<script>
+var idKebunArray = [];
+var dataKebunArray = [];
 
-            $('#idKebun').val(idKebun);
-            $('#dataKebun').val(lokasiLuas);
-        }
-    </script>
+function tampilData<?= $value['id'] ?>() {
+    var d = '#select<?= $value['id'] ?>';
+    var id = $(d).data('id');
+    var index = idKebunArray.indexOf(id);
+    if (index === -1) {
+        idKebunArray.push(id);
+    }
+    var idKebunString = JSON.stringify(idKebunArray);
+    var cleanedidKebunString = idKebunString.replace(/[\[\]"]/g, '');
+    console.log(cleanedidKebunString);
+    var lokasiLuas = $(d).data('lokasi') + ' ' + $(d).data('luas') + ' ' + $(d).data('satuan');
+    var satuan = $(d).data('satuan');
+    $(d).addClass('disabled');
+    $('#idKebun').val(cleanedidKebunString);
+    var index = dataKebunArray.indexOf(lokasiLuas);
+    if (index === -1) {
+        dataKebunArray.push(lokasiLuas);
+    }
+    var dataKebunString = JSON.stringify(dataKebunArray);
+    var cleanedString = dataKebunString.replace(/[\[\]"]/g, '');
+    console.log(cleanedString);
+    $('#dataKebun').val(cleanedString);
+}
+</script>
 <?php endforeach; ?>
 
 <?= $this->endSection(); ?>

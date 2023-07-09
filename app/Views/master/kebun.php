@@ -9,6 +9,9 @@ Kebun
 <section class="section">
     <div class="card">
         <div class="card-header">
+            <?php if (in_groups('admin') == true) { ?>
+            <a href="<?= base_url('kebun/print')?>" class="btn btn-primary rounded-pill" target="_blank">Print All</a>
+            <?php } ?>
         </div>
         <div class="card-body">
             <div class="table-responsive">

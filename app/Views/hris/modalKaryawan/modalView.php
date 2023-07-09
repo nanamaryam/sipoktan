@@ -1,10 +1,11 @@
-<div class="modal fade text-left" id="modalKebun" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+<div class="modal fade text-left" id="modalKebun" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialogmodal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title white" id="myModalLabel160">Data Kebun</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close">
+                    Selesai
                 </button>
             </div>
             <form action="" method="POST" enctype="multipart/form-data">
@@ -23,13 +24,19 @@
                             </thead>
                             <tbody style="text-align: center;">
                                 <?php foreach ($dataKebun as $value) : ?>
-                                    <tr>
-                                        <td><button type="button" class="btn btn-primary rounded-pill btn-sm " id="select<?= $value['id'] ?>" data-id="<?= $value['id']; ?>" data-lokasi="<?= $value['lokasi']; ?>" data-luas="<?= $value['luas']; ?>" data-satuan="<?= $value['satuan']; ?>" onclick="tampilData<?= $value['id'] ?>()" class="close" data-bs-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Tambah Data"><i class="bi bi-plus-lg"></button></td>
-                                        <td><?= $value['lokasi'] ?></td>
-                                        <td><?= $value['luas'] ?> <?= $value['satuan'] ?></td>
-                                        <td><?= $value['tahun'] ?></td>
-                                        <td><?= $value['jenis_tanaman'] ?></td>
-                                    </tr>
+                                <tr>
+                                    <td><button type="button" class="btn btn-primary rounded-pill btn-sm"
+                                            id="select<?= $value['id'] ?>" data-id="<?= $value['id']; ?>"
+                                            data-lokasi="<?= $value['lokasi']; ?>" data-luas="<?= $value['luas']; ?>"
+                                            data-satuan="<?= $value['satuan']; ?>"
+                                            onclick="tampilData<?= $value['id'] ?>()" data-toggle="tooltip"
+                                            data-bs-placement="top" data-bs-original-title="Tambah Data"><i
+                                                class="bi bi-plus-lg"></button></td>
+                                    <td><?= $value['lokasi'] ?></td>
+                                    <td><?= $value['luas'] ?> <?= $value['satuan'] ?></td>
+                                    <td><?= $value['tahun'] ?></td>
+                                    <td><?= $value['jenis_tanaman'] ?></td>
+                                </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

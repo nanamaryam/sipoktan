@@ -47,6 +47,14 @@ class SatuanModel extends Model
             ->get();
         return $getActive;
     }
+    public function getActivePanen()
+    {
+        $getActive = $this->db->table('satuan')
+            ->where('status =', 'Active')
+            ->where('satuan =', 'kg', 'or', 'satuan =', 'Kg')
+            ->get();
+        return $getActive;
+    }
     public function getInactive()
     {
         $getInactive = $this->db->table('satuan')

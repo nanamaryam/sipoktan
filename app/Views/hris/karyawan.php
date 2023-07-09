@@ -8,20 +8,29 @@ Karyawan
 <?= $this->section('content'); ?>
 <section class="section">
     <?php if ($validation->hasError('foto_karyawan') or $validation->hasError('nama_karyawan') or $validation->hasError('id_kebun')) { ?>
-        <div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> <?= $validation->listErrors() ?></div>
+    <div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i>
+        <?= $validation->listErrors() ?></div>
     <?php } ?>
     <?php if (session()->getFlashdata('pesan')) : ?>
-        <div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> <?= session()->getFlashdata('pesan') ?></div>
+    <div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i>
+        <?= session()->getFlashdata('pesan') ?></div>
     <?php endif; ?>
     <div class="row">
         <div class="col-lg-9">
             <div class="card">
                 <div class="card-header">
                     <form action="<?= base_url('karyawan/exportexcel'); ?>" method="POST">
-                        <a href="<?= base_url('karyawan/addkaryawan'); ?>" type="button" class="btn btn-primary rounded-pill"><i class="bi bi-plus-lg"></i> Tambah Data Karyawan</a>
-                        <a href="<?= base_url('karyawan/print'); ?>" type="button" class="btn btn-info rounded-pill btn-sm float-end" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print All" target="_blank"><i class="bi bi-printer"></i></a>
+                        <a href="<?= base_url('karyawan/addkaryawan'); ?>" type="button"
+                            class="btn btn-primary rounded-pill"><i class="bi bi-plus-lg"></i> Tambah Data Karyawan</a>
+                        <a href="<?= base_url('karyawan/print'); ?>" type="button"
+                            class="btn btn-info rounded-pill btn-sm float-end" data-toggle="tooltip"
+                            data-bs-placement="top" data-bs-original-title="Print All" target="_blank"><i
+                                class="bi bi-printer"></i></a>
 
-                        <button type="submit" style="margin-right:5px;" class="btn btn-success rounded-pill btn-sm float-end" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Export Excel"><i class="bi bi-file-earmark-excel-fill"></i></button>
+                        <button type="submit" style="margin-right:5px;"
+                            class="btn btn-success rounded-pill btn-sm float-end" data-toggle="tooltip"
+                            data-bs-placement="top" data-bs-original-title="Export Excel"><i
+                                class="bi bi-file-earmark-excel-fill"></i></button>
                     </form>
                 </div>
                 <div class="card-body">
@@ -35,22 +44,37 @@ Karyawan
                             </thead>
                             <tbody>
                                 <?php foreach ($dataKaryawan as $value) : ?>
-                                    <tr>
-                                        <td>
-                                            <center>
-                                                <div alt="<?= $value['foto_karyawan']; ?>" style="width: 100px;border-radius:50%; height:100px; background:url('<?= base_url('assets/images/karyawan/' . $value['foto_karyawan']); ?>') center center; background-size: 102px;background-repeat: no-repeat;"></div>
-                                            </center>
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <h3><?= $value['nama_karyawan']; ?></h3>
-                                            <p><?= $value['alamat']; ?></p>
-                                            <p><span class="badge bg-light-warning"><?= $value['date_gabung']; ?></span> | <span class="badge bg-light-success"><?= $value['status']; ?></span> | <span class="badge bg-light-info"><?= $value['pen_terakhir']; ?></span> | <span class="badge bg-light-primary"><?= $value['lokasi']; ?></span> | <span class="badge bg-light-secondary"><?= $value['luas']; ?> <?= $value['satuan']; ?></span></p>
-                                            <div>
-                                                <a href="<?= base_url('karyawan/editkaryawan/' . $value['id']); ?>" type="button" class="btn btn-warning rounded-pill btn-sm" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Edit"><i class="bi bi-pen"></i></a>
-                                                <button type="button" class="btn btn-danger rounded-pill btn-sm" data-bs-toggle="modal" data-bs-target="#deleteKaryawan<?= $value['id'] ?>" data-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Hapus"><i class="bi bi-trash"></i></button>
+                                <tr>
+                                    <td>
+                                        <center>
+                                            <div alt="<?= $value['foto_karyawan']; ?>"
+                                                style="width: 100px;border-radius:50%; height:100px; background:url('<?= base_url('assets/images/karyawan/' . $value['foto_karyawan']); ?>') center center; background-size: 102px;background-repeat: no-repeat;">
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </center>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <h3><?= $value['nama_karyawan']; ?></h3>
+                                        <p><?= $value['alamat']; ?></p>
+                                        <p><span class="badge bg-light-warning"><?= $value['date_gabung']; ?></span> |
+                                            <span class="badge bg-light-success"><?= $value['status']; ?></span> | <span
+                                                class="badge bg-light-info"><?= $value['pen_terakhir']; ?></span> |
+                                            <span class="badge bg-light-primary"><?= $value['lokasi']; ?></span> | <span
+                                                class="badge bg-light-secondary"><?= $value['luas']; ?>
+
+                                        </p>
+                                        <div>
+                                            <a href="<?= base_url('karyawan/editkaryawan/' . $value['id']); ?>"
+                                                type="button" class="btn btn-warning rounded-pill btn-sm"
+                                                data-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-original-title="Edit"><i class="bi bi-pen"></i></a>
+                                            <button type="button" class="btn btn-danger rounded-pill btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteKaryawan<?= $value['id'] ?>"
+                                                data-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-original-title="Hapus"><i class="bi bi-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

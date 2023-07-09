@@ -19,11 +19,22 @@ class LabaController extends BaseController
     }
     public function index()
     {
-        $dataLaba = $this->labaModel->findAll();
+        $dataLaba = $this->labaModel->getAlldata()->getResultArray();
+       
         $data = [
             'dataLaba'  => $dataLaba
         ];
         return view('finance/laba', $data);
+    }
+    public function detailLaba()
+    {
+        $param = $this->request->getVar('acara_berita');
+        $dataLaba = $this->labaModel->where('acara_berita =', $param)->get()->getResultArray();
+    
+        $data = [
+            'dataLaba'  => $dataLaba
+        ];
+        return view('finance/labaFolder/detailLaba', $data);
     }
     public function printAllLaba()
     {
@@ -51,14 +62,18 @@ class LabaController extends BaseController
         $spreadsheet->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Waktu')
             ->setCellValue('B1', 'Berita Acara')
-            ->setCellValue('C1', 'Nominal');
+            ->setCellValue('C1', 'Panen')
+            ->setCellValue('D1', 'Berat')
+            ->setCellValue('E1', 'Nominal');
 
         $column = 2;
         foreach ($dataLaba as $value) {
             $spreadsheet->setActiveSheetIndex(0)
                 ->setCellValue('A' . $column, $value['laba_time'])
                 ->setCellValue('B' . $column, $value['acara_berita'])
-                ->setCellValue('C' . $column, $value['nominal']);
+                ->setCellValue('C' . $column, $value['ket_panen'])
+                ->setCellValue('D' . $column, $value['berat_kg'])
+                ->setCellValue('E' . $column, $value['nominal']);
 
             $column++;
         }
@@ -80,14 +95,18 @@ class LabaController extends BaseController
         $spreadsheet->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Waktu')
             ->setCellValue('B1', 'Berita Acara')
-            ->setCellValue('C1', 'Nominal');
+            ->setCellValue('C1', 'Panen')
+            ->setCellValue('D1', 'Berat')
+            ->setCellValue('E1', 'Nominal');
 
         $column = 2;
         foreach ($dataLaba as $value) {
             $spreadsheet->setActiveSheetIndex(0)
                 ->setCellValue('A' . $column, $value['laba_time'])
                 ->setCellValue('B' . $column, $value['acara_berita'])
-                ->setCellValue('C' . $column, $value['nominal']);
+                ->setCellValue('C' . $column, $value['ket_panen'])
+                ->setCellValue('D' . $column, $value['berat_kg'])
+                ->setCellValue('E' . $column, $value['nominal']);
 
             $column++;
         }

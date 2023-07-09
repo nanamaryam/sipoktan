@@ -60,10 +60,11 @@ class AbsensiModel extends Model
     public function getAdminAbsensi()
     {
         $data = $this->db->table('absensi')
-            ->select('absensi.*, users.username, users.email')
+            ->select('absensi.user_login, COUNT(absensi.user_login) AS login_count, users.username, users.email')
             ->join('users', 'absensi.user_login = users.id')
-            ->groupBy('user_login')
+            ->groupBy('absensi.user_login')
             ->get();
+        
         return $data;
     }
     public function getDetailAbsensi($idUser)
